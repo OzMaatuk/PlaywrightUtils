@@ -1,0 +1,8 @@
+.env
+__pycache__
+.coverage
+.vscode
+*.log
+.pytest_cache
+.devcontainer
+playwright_utils.egg-info

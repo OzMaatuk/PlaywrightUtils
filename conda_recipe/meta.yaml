@@ -1,0 +1,39 @@
+# conda_recipe/meta.yaml
+
+package:
+  name: playwright_utils
+  version: "0.1.0"
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - playwright
+    - python-dotenv
+    - configparser
+    - fuzzywuzzy
+
+test:
+  imports:
+    - playwright_utils
+
+about:
+  home: https://github.com/OzMaatuk/playwright_utils
+  license: MIT
+  license_file: LICENSE
+  summary: "Utility functions for Playwright automation"
+  description: |
+    Utility functions for Playwright automation.
+
+extra:
+  recipe-maintainers:
+    - Oz Levi

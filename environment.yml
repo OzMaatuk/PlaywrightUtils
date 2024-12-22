@@ -1,0 +1,18 @@
+# environment.yml
+
+name: playwright_utils_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - playwright
+  - python-dotenv
+  - configparser
+  - fuzzywuzzy
+  - pytest
+  - pytest-mock
+  - pytest-playwright
+  - pip:
+      - -e .

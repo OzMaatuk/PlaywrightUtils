@@ -1,0 +1,6 @@
+playwright
+python-dotenv
+configparser
+pytest
+pytest-mock
+pytest-playwright
