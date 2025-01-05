@@ -32,3 +32,6 @@ test = [
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[project.urls]
+homepage = "https://github.com/OzMaatuk/PlaywrightUtils"
