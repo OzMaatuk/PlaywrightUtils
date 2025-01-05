@@ -12,18 +12,23 @@ def wait_for_element(page: Page, selector: str, timeout: int = 10000) -> Locator
 
 def wait_for_all_elements(page: Page, selector: str, timeout: int = 10000) -> List[Locator]:
     logger.debug(f"wait_for_all_elements: {selector}")
+    page.wait_for_selector(selector, timeout=timeout)
     return page.query_selector_all(selector)
 
 def wait_for_element_to_be_clickable(page: Page, selector: str, timeout: int = 10000) -> Locator:
     logger.debug(f"wait_for_element_to_be_clickable: {selector}")
     element = wait_for_element(page, selector, timeout)
-    page.wait_for_function("element => element.click()", element)
+    page.wait_for_function(
+        "element => element && element.offsetParent !== null && !element.disabled",
+        arg=element,
+        timeout=timeout
+    )
     return element
 
-def wait_for_url_change(page: Page, current_url: str, timeout: int = 10000) -> None:
-    logger.debug(f"wait_for_url_change: {current_url}")
-    page.wait_for_url(lambda url: url != current_url, timeout=timeout)
-
+def wait_for_url_change(page: Page, url: str, timeout: int = 10000) -> None:
+    logger.debug(f"wait_for_url_change: {url}")
+    page.wait_for_url(url, timeout=timeout)
+    
 def click_element_safely(page: Page, selector: str, timeout: int = 10000) -> None:
     logger.debug(f"click_element_safely: {selector}")
     element = wait_for_element_to_be_clickable(page, selector, timeout)

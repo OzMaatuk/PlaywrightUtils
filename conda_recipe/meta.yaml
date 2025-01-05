@@ -20,20 +20,18 @@ requirements:
     - playwright
     - python-dotenv
     - configparser
-    - fuzzywuzzy
+    - agentql
 
 test:
   imports:
     - playwright_utils
 
 about:
-  home: https://github.com/OzMaatuk/playwright_utils
+  home: https://github.com/OzMaatuk/JobApplicationAutomation
   license: MIT
   license_file: LICENSE
-  summary: "Utility functions for Playwright automation"
-  description: |
-    Utility functions for Playwright automation.
-
+  summary: ""
+  description: ""
 extra:
   recipe-maintainers:
     - Oz Levi
