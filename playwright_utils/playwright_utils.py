@@ -28,6 +28,7 @@ def wait_for_element_to_be_clickable(page: Page, selector: str, timeout: int = 1
 def wait_for_url_change(page: Page, url: str, timeout: int = 10000) -> None:
     logger.debug(f"wait_for_url_change: {url}")
     page.wait_for_url(url, timeout=timeout)
+    page.wait_for_load_state("domcontentloaded")
     
 def click_element_safely(page: Page, selector: str, timeout: int = 10000) -> None:
     logger.debug(f"click_element_safely: {selector}")
