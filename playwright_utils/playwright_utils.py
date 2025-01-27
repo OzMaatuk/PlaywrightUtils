@@ -35,9 +35,12 @@ def click_element_safely(page: Page, selector: str, timeout: int = 10000) -> Non
     element = wait_for_element_to_be_clickable(page, selector, timeout)
     element.click()
 
-def send_keys_safely(page: Page, selector: str, text: str, timeout: int = 10000) -> None:
-    logger.debug(f"send_keys_safely: {selector}, {text}")
-    element = wait_for_element(page, selector, timeout)
+def send_keys_safely(page: Page, selector_or_element: str | Locator, text: str, timeout: int = 10000) -> None:
+    logger.debug(f"send_keys_safely: {selector_or_element}, {text}")
+    if isinstance(selector_or_element, str):
+        element = wait_for_element(page, selector_or_element, timeout)
+    else:
+        element = selector_or_element
     element.fill(text)
 
 def get_element_text(page: Page, selector: str) -> Optional[str]:
