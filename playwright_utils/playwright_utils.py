@@ -43,20 +43,20 @@ def send_keys_safely(page: Page, selector_or_element: str | Locator, text: str, 
         element = selector_or_element
     element.fill(text)
 
-def get_element_text(page: Page, selector: str) -> Optional[str]:
+def get_element_text(page: Page, selector: str, timeout: int = 10000) -> Optional[str]:
     logger.debug(f"get_element_text: {selector}")
-    element = wait_for_element(page, selector)
+    element = wait_for_element(page, selector, timeout)
     return element.inner_text().strip() if element else None
 
-def get_element_attribute(page: Page, selector: str, attribute: str) -> Optional[str]:
+def get_element_attribute(page: Page, selector: str, attribute: str, timeout: int = 10000) -> Optional[str]:
     logger.debug(f"get_element_attribute: {selector}, {attribute}")
-    element = wait_for_element(page, selector)
+    element = wait_for_element(page, selector, timeout)
     return element.get_attribute(attribute) if element else None
 
-def check_element_exist(page: Page, selector: str) -> bool:
+def check_element_exist(page: Page, selector: str, timeout: int = 10000) -> bool:
     logger.debug(f"check_element_exist: {selector}")
     try:
-        wait_for_element_to_be_clickable(page, selector)
+        wait_for_element_to_be_clickable(page, selector, timeout)
         return True
     except Exception:
         return False
